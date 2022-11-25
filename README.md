@@ -1,3 +1,12 @@
+## PROGRESS
+# RELEASE 0 DONE
+# RELEASE 1 DONE
+RELEASE 2 x
+# RELEASE 3 DONE
+# RELEASE 4 DONE
+RELEASE 5 X
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
