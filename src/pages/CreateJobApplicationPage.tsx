@@ -7,9 +7,9 @@ import {
 } from "@mui/material";
 import React from "react";
 
-type CreateJobApplicationProps = {};
+type CreateJobApplicationPageProps = {};
 
-const CreateJobApplication = (props: CreateJobApplicationProps) => {
+const CreateJobApplicationPage = (props: CreateJobApplicationPageProps) => {
   return (
     <Container>
       <Typography>Buat Lowongan Pekerjaan:</Typography>
@@ -141,4 +141,4 @@ const CreateJobApplication = (props: CreateJobApplicationProps) => {
   );
 };
 
-export default CreateJobApplication;
+export default CreateJobApplicationPage;

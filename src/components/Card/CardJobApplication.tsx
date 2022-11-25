@@ -13,13 +13,14 @@ export type JobListType = {
   salaryFrom: number;
   salaryTo: number;
   postedDate: string;
+  onClick: () => void;
 };
 
 const BoxStyled = styled(Box)(({ theme }: { theme: Theme }) => ({
   border: "1px solid grey",
   padding: "16px",
   backgroundColor: "white",
-  borderRadius: "8px"
+  borderRadius: "8px",
 }));
 
 type Props = JobListType;
@@ -36,6 +37,7 @@ const CardJobApplication = ({
   salaryFrom,
   salaryTo,
   status,
+  onClick
 }: Props) => {
   return (
     <BoxStyled>
@@ -62,7 +64,12 @@ const CardJobApplication = ({
           Baca Detail
         </Link>
       </Box>
-      <Button variant="contained" color="success" fullWidth>
+      <Button
+        variant="contained"
+        color="success"
+        fullWidth
+        onClick={onClick}
+      >
         KIRIM LAMARAN
       </Button>
     </BoxStyled>

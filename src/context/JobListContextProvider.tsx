@@ -33,7 +33,6 @@ const JobList = ({ children }: { children: React.ReactNode }) => {
       const res = await fetch("https://test-server-klob.onrender.com/fakeJob");
       const data = await res.json();
       setJobList(data);
-      console.log(data, "apa ini data di useeffect context");
     };
 
     if (!jobList || !jobList.length) {
@@ -41,7 +40,6 @@ const JobList = ({ children }: { children: React.ReactNode }) => {
     }
   }, [jobList, setJobList]);
 
-  console.log("here on context");
   const contextValue = {
     jobList,
     setJobList,

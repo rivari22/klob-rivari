@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 // import "./index.css";
-import { Route, Routes, BrowserRouter, } from "react-router-dom";
+import GlobalStyles from '@mui/material/GlobalStyles';
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import Homepage from "./pages/Homepage";
 import JobApplicationPage from "./pages/JobApplicationPage";
 import JobListContextProvider from "./context/JobListContextProvider";
-import CreateJobApplication from "./pages/CreateJobApplication";
+import CreateJobApplicationPage from "./pages/CreateJobApplicationPage";
+import Header from "./components/Header/Header";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -14,6 +16,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+      <Header />
+      <GlobalStyles styles={{ body: { paddingTop: '56px' } }} />
       <JobListContextProvider>
         <Routes>
           <Route path="/" element={<Homepage />} />
@@ -21,7 +25,10 @@ root.render(
         </Routes>
       </JobListContextProvider>
       <Routes>
-        <Route path="/buat-lowongan-pekerjaan" element={<CreateJobApplication />} />
+        <Route
+          path="/buat-lowongan-pekerjaan"
+          element={<CreateJobApplicationPage />}
+        />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
