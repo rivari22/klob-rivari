@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 // import "./index.css";
-import GlobalStyles from '@mui/material/GlobalStyles';
+import GlobalStyles from "@mui/material/GlobalStyles";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import Homepage from "./pages/Homepage";
-import JobApplicationPage from "./pages/JobApplicationPage";
+import JobApplicationSentPage from "./pages/JobApplicationSentPage";
 import JobListContextProvider from "./context/JobListContextProvider";
 import CreateJobApplicationPage from "./pages/CreateJobApplicationPage";
 import Header from "./components/Header/Header";
@@ -17,19 +17,17 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Header />
-      <GlobalStyles styles={{ body: { paddingTop: '56px' } }} />
+      <GlobalStyles styles={{ body: { paddingTop: "56px" } }} />
       <JobListContextProvider>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/lamaran-terkirim" element={<JobApplicationPage />} />
+          <Route path="/lamaran-terkirim" element={<JobApplicationSentPage />} />
+          <Route
+            path="/buat-lowongan-pekerjaan"
+            element={<CreateJobApplicationPage />}
+          />
         </Routes>
       </JobListContextProvider>
-      <Routes>
-        <Route
-          path="/buat-lowongan-pekerjaan"
-          element={<CreateJobApplicationPage />}
-        />
-      </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );

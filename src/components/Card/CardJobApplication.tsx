@@ -13,7 +13,6 @@ export type JobListType = {
   salaryFrom: number;
   salaryTo: number;
   postedDate: string;
-  onClick: () => void;
 };
 
 const BoxStyled = styled(Box)(({ theme }: { theme: Theme }) => ({
@@ -23,7 +22,10 @@ const BoxStyled = styled(Box)(({ theme }: { theme: Theme }) => ({
   borderRadius: "8px",
 }));
 
-type Props = JobListType;
+type Props = JobListType & {
+  type: "sent" | "withdraw";
+  onClick: () => void;
+};
 
 const CardJobApplication = ({
   applied,
@@ -37,7 +39,8 @@ const CardJobApplication = ({
   salaryFrom,
   salaryTo,
   status,
-  onClick
+  onClick,
+  type,
 }: Props) => {
   return (
     <BoxStyled>
@@ -66,11 +69,11 @@ const CardJobApplication = ({
       </Box>
       <Button
         variant="contained"
-        color="success"
+        color={type === "sent" ? "success" : "warning"}
         fullWidth
         onClick={onClick}
       >
-        KIRIM LAMARAN
+        {type === "sent" ? "KIRIM LAMARAN" : "BATALKAN LAMARAN"}
       </Button>
     </BoxStyled>
   );

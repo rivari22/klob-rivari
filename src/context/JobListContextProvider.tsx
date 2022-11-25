@@ -1,4 +1,5 @@
 import React from "react";
+import { urlGetListJob } from "../constants";
 import usePersistedState from "../hooks/usePersistedState";
 
 export type JobListType = {
@@ -30,11 +31,12 @@ const JobList = ({ children }: { children: React.ReactNode }) => {
 
   React.useEffect(() => {
     const fetchList = async () => {
-      const res = await fetch("https://test-server-klob.onrender.com/fakeJob");
+      const res = await fetch(urlGetListJob);
       const data = await res.json();
       setJobList(data);
     };
 
+    // fetchList();
     if (!jobList || !jobList.length) {
       fetchList();
     }

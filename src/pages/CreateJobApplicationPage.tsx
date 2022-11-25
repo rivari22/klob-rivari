@@ -1,15 +1,50 @@
 import {
+  Button,
   Container,
   FormControl,
   Grid,
   OutlinedInput,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useContext, useState } from "react";
+import { JobListContext } from "../context/JobListContextProvider";
+import generateStringRandom from "../helpers/generateStringRandom";
 
-type CreateJobApplicationPageProps = {};
+const CreateJobApplicationPage = () => {
+  const { jobList, setJobList } = useContext(JobListContext);
 
-const CreateJobApplicationPage = (props: CreateJobApplicationPageProps) => {
+  const [dataField, setDataField] = useState<any>({
+    corporateLogo: "",
+    corporateName: "",
+    positionName: "",
+    status: "",
+    salaryFrom: "",
+    salaryTo: "",
+    postedDate: null,
+  });
+
+  const handleOnChangeInput = (e: any) => {
+    setDataField((prev: any) => ({
+      ...prev,
+      [e.target?.name]: e.target?.value,
+    }));
+  };
+
+  const handleSave = () => {
+    const payload = {
+      ...dataField,
+      applied: false,
+      descriptions: "",
+      jobVacanyCode: generateStringRandom(5),
+      corporateId: generateStringRandom(4),
+      salaryFrom: +dataField.salaryFrom,
+      salaryTo: +dataField.salaryTo,
+    };
+
+    const newData = [...jobList, payload];
+    setJobList(newData);
+  };
+
   return (
     <Container>
       <Typography>Buat Lowongan Pekerjaan:</Typography>
@@ -18,8 +53,10 @@ const CreateJobApplicationPage = (props: CreateJobApplicationPageProps) => {
           Logo Perusahaan
         </Typography>
         <OutlinedInput
+          name="corporateLogo"
+          onChange={handleOnChangeInput}
+          value={dataField.corporateLogo}
           // id="outlined-adornment-weight"
-          value={""}
           style={{ height: "30px" }}
           placeholder="Ketikan Logo Perusahaan"
           // onChange={handleChange("weight")}
@@ -36,7 +73,9 @@ const CreateJobApplicationPage = (props: CreateJobApplicationPageProps) => {
         </Typography>
         <OutlinedInput
           // id="outlined-adornment-weight"
-          value={""}
+          name="corporateName"
+          onChange={handleOnChangeInput}
+          value={dataField.corporateName}
           style={{ height: "30px" }}
           placeholder="Ketikan Logo Perusahaan"
           // onChange={handleChange("weight")}
@@ -53,7 +92,9 @@ const CreateJobApplicationPage = (props: CreateJobApplicationPageProps) => {
         </Typography>
         <OutlinedInput
           // id="outlined-adornment-weight"
-          value={""}
+          name="positionName"
+          onChange={handleOnChangeInput}
+          value={dataField.positionName}
           style={{ height: "30px" }}
           placeholder="Ketikan Nama Lowongan"
           // onChange={handleChange("weight")}
@@ -70,7 +111,9 @@ const CreateJobApplicationPage = (props: CreateJobApplicationPageProps) => {
         </Typography>
         <OutlinedInput
           // id="outlined-adornment-weight"
-          value={""}
+          name="status"
+          onChange={handleOnChangeInput}
+          value={dataField.status}
           style={{ height: "30px" }}
           placeholder="Ketikan Status Karyawan"
           // onChange={handleChange("weight")}
@@ -87,7 +130,9 @@ const CreateJobApplicationPage = (props: CreateJobApplicationPageProps) => {
           <FormControl sx={{ width: "100%" }} variant="outlined">
             <OutlinedInput
               // id="outlined-adornment-weight"
-              value={""}
+              name="salaryFrom"
+              onChange={handleOnChangeInput}
+              value={dataField.salaryFrom}
               style={{ height: "30px" }}
               placeholder="Ketikan Status Karyawan"
               // onChange={handleChange("weight")}
@@ -106,7 +151,9 @@ const CreateJobApplicationPage = (props: CreateJobApplicationPageProps) => {
           <FormControl sx={{ width: "100%" }} variant="outlined">
             <OutlinedInput
               // id="outlined-adornment-weight"
-              value={""}
+              name="salaryTo"
+              onChange={handleOnChangeInput}
+              value={dataField.salaryTo}
               style={{ height: "30px" }}
               placeholder="Ketikan Status Karyawan"
               // onChange={handleChange("weight")}
@@ -125,7 +172,10 @@ const CreateJobApplicationPage = (props: CreateJobApplicationPageProps) => {
         </Typography>
         <OutlinedInput
           // id="outlined-adornment-weight"
-        //   value={""}
+          //   value={""}
+          name="postedDate"
+          onChange={handleOnChangeInput}
+          value={dataField.postedDate}
           style={{ height: "30px" }}
           placeholder="Ketikan Logo Perusahaan"
           type="date"
@@ -137,6 +187,9 @@ const CreateJobApplicationPage = (props: CreateJobApplicationPageProps) => {
           // }}
         />
       </FormControl>
+      <Button onClick={handleSave} variant="contained">
+        Simpan
+      </Button>
     </Container>
   );
 };
