@@ -72,6 +72,7 @@ const CardJobApplication = ({
         color={type === "sent" ? "success" : "warning"}
         fullWidth
         onClick={onClick}
+        disabled={type === 'sent' && applied}
       >
         {type === "sent" ? "KIRIM LAMARAN" : "BATALKAN LAMARAN"}
       </Button>
