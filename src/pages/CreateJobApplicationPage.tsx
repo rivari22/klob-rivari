@@ -135,6 +135,7 @@ const CreateJobApplicationPage = () => {
               value={dataField.salaryFrom}
               style={{ height: "30px" }}
               placeholder="Ketikan Status Karyawan"
+              type="number"
               // onChange={handleChange("weight")}
               // endAdornment={<InputAdornment position="end">kg</InputAdornment>}
               // aria-describedby="outlined-weight-helper-text"
@@ -156,6 +157,7 @@ const CreateJobApplicationPage = () => {
               value={dataField.salaryTo}
               style={{ height: "30px" }}
               placeholder="Ketikan Status Karyawan"
+              type="number"
               // onChange={handleChange("weight")}
               // endAdornment={<InputAdornment position="end">kg</InputAdornment>}
               // aria-describedby="outlined-weight-helper-text"
