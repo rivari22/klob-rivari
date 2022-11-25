@@ -1,15 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+// import "./index.css";
+import { Route, Routes, BrowserRouter, } from "react-router-dom";
+import reportWebVitals from "./reportWebVitals";
+import Homepage from "./pages/Homepage";
+import JobApplicationPage from "./pages/JobApplicationPage";
+import JobListContextProvider from "./context/JobListContextProvider";
+import CreateJobApplication from "./pages/CreateJobApplication";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <JobListContextProvider>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/lamaran-terkirim" element={<JobApplicationPage />} />
+        </Routes>
+      </JobListContextProvider>
+      <Routes>
+        <Route path="/buat-lowongan-pekerjaan" element={<CreateJobApplication />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
