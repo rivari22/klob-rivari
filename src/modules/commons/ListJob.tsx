@@ -19,7 +19,7 @@ const ListJob = ({ jobList, title, onClick, type }: ListJobProps) => {
       </Title>
       <Grid container gap={"12px"} justifyContent="center">
         {jobList?.map((job, index) => (
-          <Grid item key={job.jobVacancyCode} xs={8} sm={5} lg={3}>
+          <Grid item key={job.jobVacancyCode} xs={12} sm={5} lg={3}>
             <CardJobApplication {...job} onClick={() => onClick(index, job.jobVacancyCode)} type={type} />
           </Grid>
         ))}

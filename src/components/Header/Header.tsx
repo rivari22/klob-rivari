@@ -1,8 +1,6 @@
 import { Box, Grid, styled, Theme, Typography } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
-
-type Props = {};
+import { NavLink } from "react-router-dom";
 
 const BoxStyled = styled(Box)(({ theme }: { theme: Theme }) => ({
   borderBottom: "1px solid grey",
@@ -17,19 +15,43 @@ const BoxStyled = styled(Box)(({ theme }: { theme: Theme }) => ({
   justifyContent: "space-around",
 }));
 
-const Header = (props: Props) => {
+const nonActiveTab = {
+  color: "black",
+  textDecoration: "none",
+};
+
+const activeTab = {
+  textDecoration: "underline",
+};
+
+const Header = () => {
   return (
     <header style={{ width: "100%" }}>
       <BoxStyled>
         <Typography>
-          <Link to="/">Home</Link>
+          <NavLink
+            to="/"
+            style={({ isActive }) => (isActive ? activeTab : nonActiveTab)}
+          >
+            Home
+          </NavLink>
         </Typography>
         <Grid container width="auto" gap={"12px"}>
           <Typography>
-            <Link to="/buat-lowongan-pekerjaan">Buat Lowongan</Link>
+            <NavLink
+              to="/buat-lowongan-pekerjaan"
+              style={({ isActive }) => (isActive ? activeTab : nonActiveTab)}
+            >
+              Buat Lowongan
+            </NavLink>
           </Typography>
           <Typography>
-            <Link to="/lamaran-terkirim">Lamaran Terikirim</Link>
+            <NavLink
+              to="/lamaran-terkirim"
+              style={({ isActive }) => (isActive ? activeTab : nonActiveTab)}
+            >
+              Lamaran Terikirim
+            </NavLink>
           </Typography>
         </Grid>
       </BoxStyled>
