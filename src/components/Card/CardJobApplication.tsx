@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { emptyImageUrl } from "../../constants";
 import { JobListType } from "../../context/JobListContextProvider";
+import { convertDate } from "../../helpers/convertDate";
 import convertMoney from "../../helpers/convertMoney";
 
 export const BoxStyled = styled(Box)(({ theme }: { theme: Theme }) => ({
@@ -68,8 +69,7 @@ const CardJobApplication = ({
             variant="outlined"
           />
         </Box>
-
-        <Typography textAlign="end">{postedDate}</Typography>
+        <Typography textAlign="end" mb={1}>{convertDate({date: new Date(postedDate)})}</Typography>
       </Link>
       <Button
         variant="contained"
