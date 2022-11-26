@@ -24,7 +24,6 @@ const Homepage = () => {
       onClick={handleOnApply}
       type="sent"
     />
-    // <>test</>
   );
 };
 

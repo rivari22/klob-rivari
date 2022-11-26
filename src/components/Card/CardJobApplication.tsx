@@ -50,7 +50,7 @@ const CardJobApplication = ({
       </Typography>
       <Typography textAlign="end">{postedDate || "01/02/2022"}</Typography>
       <Box>
-        <Link to={`/lowongan/detail/${jobVacancyCode}`}>Baca Detail {jobVacancyCode}</Link>
+        <Link to={`/lowongan/detail/${jobVacancyCode}`}>Baca Detail</Link>
       </Box>
       <Button
         variant="contained"
