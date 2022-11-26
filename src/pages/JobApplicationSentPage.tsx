@@ -1,4 +1,4 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import React, { useCallback, useContext, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Title from "../components/Title/Title";

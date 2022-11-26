@@ -199,7 +199,7 @@ const CreateJobApplicationPage = () => {
         </FormControl>
         <Typography zIndex={2}>Kisaran Gaji Karyawan</Typography>
         <Grid container mb={"8px"}>
-          <Grid item xs={5}>
+          <Grid item xs={12} sm={5}>
             <FormControl sx={{ width: "100%" }} variant="outlined">
               <OutlinedInput
                 {...register("salaryFrom", {
@@ -218,10 +218,10 @@ const CreateJobApplicationPage = () => {
               )}
             </FormControl>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={12} sm={2}>
             <Typography textAlign="center">sampai dengan</Typography>
           </Grid>
-          <Grid item xs={5}>
+          <Grid item xs={12} sm={5}>
             <FormControl sx={{ width: "100%" }} variant="outlined">
               <OutlinedInput
                 {...register("salaryTo", {
