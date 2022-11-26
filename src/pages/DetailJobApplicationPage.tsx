@@ -1,9 +1,10 @@
-import { Box, Button,  Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React, { useCallback, useContext, useMemo } from "react";
 import { useParams } from "react-router-dom";
 
 import { BoxStyled } from "../components/Card/CardJobApplication";
+import { emptyImageUrl } from "../constants";
 import { JobListContext, JobListType } from "../context/JobListContextProvider";
 import { convertDate } from "../helpers/convertDate";
 import convertMoney from "../helpers/convertMoney";
@@ -34,15 +35,22 @@ const DetailJobApplicationPage = () => {
   return (
     <Container>
       <BoxStyled>
-        <Box display="flex" justifyContent="center">
+        <Box display="flex" justifyContent="center" mb={4}>
           <img
             src={dataDetail?.corporateLogo || ""}
             alt="preview"
-            width={"80px"}
-            height={"46px"}
+            width={"180px"}
+            height={"120px"}
+            onError={(e: any) => {
+              e.target.onerror = null;
+              e.target.src = emptyImageUrl;
+              return true;
+            }}
           />
         </Box>
-        <Typography>{dataDetail?.corporateName}</Typography>
+        <Typography fontSize="16px" fontWeight={700}>
+          {dataDetail?.corporateName}
+        </Typography>
         <Box>
           <div
             dangerouslySetInnerHTML={{ __html: dataDetail?.descriptions || "" }}
