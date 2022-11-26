@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 import { urlGetListJob } from "../constants";
 import usePersistedState from "../hooks/usePersistedState";
 
@@ -29,7 +30,7 @@ export const JobListContext = React.createContext<JobListContextType>({
 const JobList = ({ children }: { children: React.ReactNode }) => {
   const [jobList, setJobList] = usePersistedState("JOB_LIST", "");
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchList = async () => {
       const res = await fetch(urlGetListJob);
       const data = await res.json();
