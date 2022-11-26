@@ -8,7 +8,7 @@ function generateStringRandom(length: number) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
 
-  return result;
+  return result.trim();
 }
 
 export default generateStringRandom;

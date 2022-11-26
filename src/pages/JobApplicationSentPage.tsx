@@ -6,10 +6,10 @@ const JobApplicationSentPage = () => {
   const { jobList, setJobList } = useContext(JobListContext);
 
   const handleOnWithdraw = useCallback(
-    (index: number, corporateId: string) => {
+    (index: number, jobVacancyCode: string) => {
       let newData = [...jobList];
       newData = newData.map((item) => {
-        if (item.corporateId === corporateId) {
+        if (item.jobVacancyCode === jobVacancyCode) {
           return { ...item, applied: false };
         }
         return item;

@@ -32,11 +32,11 @@ const CreateJobApplicationPage = () => {
 
   const handleSave = () => {
     const payload = {
+      jobVacancyCode: generateStringRandom(12),
       ...dataField,
       applied: false,
       descriptions: "",
-      jobVacanyCode: generateStringRandom(5),
-      corporateId: generateStringRandom(4),
+      corporateId: generateStringRandom(6),
       salaryFrom: +dataField.salaryFrom,
       salaryTo: +dataField.salaryTo,
     };

@@ -1,21 +1,9 @@
-import { Box, styled, Theme, Typography, Link, Button } from "@mui/material";
+import { Box, styled, Theme, Typography, Button } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
+import { JobListType } from "../../context/JobListContextProvider";
 
-export type JobListType = {
-  jobVacancyCode: string;
-  positionName: string;
-  corporateId: string;
-  corporateName: string;
-  status: string;
-  descriptions: string;
-  corporateLogo: string;
-  applied: boolean;
-  salaryFrom: number;
-  salaryTo: number;
-  postedDate: string;
-};
-
-const BoxStyled = styled(Box)(({ theme }: { theme: Theme }) => ({
+export const BoxStyled = styled(Box)(({ theme }: { theme: Theme }) => ({
   border: "1px solid grey",
   padding: "16px",
   backgroundColor: "white",
@@ -52,29 +40,26 @@ const CardJobApplication = ({
           height={"46px"}
         />
       </Box>
-      <Typography>{corporateName || "Move Forward"}</Typography>
-      <Typography>{positionName || "ADMIN HRD"}</Typography>
+      <Typography>{corporateName}</Typography>
+      <Typography>{positionName}</Typography>
       <Typography>
-        Status: <span>{positionName || "ADMIN HRD"}</span>
+        Status: <span>{status}</span>
       </Typography>
       <Typography>
         Gaji: <span>{`${salaryFrom} - ${salaryTo}`}</span>
       </Typography>
       <Typography textAlign="end">{postedDate || "01/02/2022"}</Typography>
-      {/* // should use LINK REACT ROUTER DOM */}
       <Box>
-        <Link href={`/${corporateId}`} target="_blank">
-          Baca Detail
-        </Link>
+        <Link to={`/lowongan/detail/${jobVacancyCode}`}>Baca Detail {jobVacancyCode}</Link>
       </Box>
       <Button
         variant="contained"
-        color={type === "sent" ? "success" : "warning"}
+        color={applied ? "warning" : "success"}
         fullWidth
         onClick={onClick}
-        disabled={type === 'sent' && applied}
+        disabled={applied && type === "sent"}
       >
-        {type === "sent" ? "KIRIM LAMARAN" : "BATALKAN LAMARAN"}
+        {applied ? "BATALKAN LAMARAN" : "KIRIM LAMARAN"}
       </Button>
     </BoxStyled>
   );

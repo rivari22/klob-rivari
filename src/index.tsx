@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import "./index.css";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
@@ -9,6 +8,7 @@ import JobApplicationSentPage from "./pages/JobApplicationSentPage";
 import JobListContextProvider from "./context/JobListContextProvider";
 import CreateJobApplicationPage from "./pages/CreateJobApplicationPage";
 import Header from "./components/Header/Header";
+import DetailJobApplicationPage from "./pages/DetailJobApplicationPage";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -25,6 +25,10 @@ root.render(
           <Route
             path="/buat-lowongan-pekerjaan"
             element={<CreateJobApplicationPage />}
+          />
+          <Route
+            path="/lowongan/detail/:id"
+            element={<DetailJobApplicationPage />}
           />
         </Routes>
       </JobListContextProvider>

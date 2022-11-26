@@ -7,7 +7,7 @@ import { JobListType } from "../../context/JobListContextProvider";
 type ListJobProps = {
   jobList?: Array<JobListType>;
   title: string;
-  onClick: (index: number, corporateId: string) => void;
+  onClick: (index: number, jobVacancyCode: string) => void;
   type: "sent" | "withdraw"
 };
 
@@ -19,8 +19,8 @@ const ListJob = ({ jobList, title, onClick, type }: ListJobProps) => {
       </Title>
       <Grid container gap={"12px"} justifyContent="center">
         {jobList?.map((job, index) => (
-          <Grid item key={job.corporateId} xs={8} sm={5} lg={3}>
-            <CardJobApplication {...job} onClick={() => onClick(index, job.corporateId)} type={type} />
+          <Grid item key={job.jobVacancyCode} xs={8} sm={5} lg={3}>
+            <CardJobApplication {...job} onClick={() => onClick(index, job.jobVacancyCode)} type={type} />
           </Grid>
         ))}
       </Grid>

@@ -36,7 +36,6 @@ const JobList = ({ children }: { children: React.ReactNode }) => {
       setJobList(data);
     };
 
-    // fetchList();
     if (!jobList || !jobList.length) {
       fetchList();
     }

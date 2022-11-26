@@ -15,7 +15,7 @@ const Homepage = () => {
     [jobList, setJobList]
   );
 
-  if(!jobList.length) return <>Loading</>
+  if (!jobList.length) return <>Loading</>;
 
   return (
     <ListJob
